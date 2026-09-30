@@ -1,0 +1,89 @@
+# Local (Windows, CPU, Python 3.13) environment for all chapter notebooks.
+# The notebooks pin conflicting versions for Colab (langgraph 0.6.7 ... 1.1.2);
+# this file uses one current LangChain/LangGraph 1.x stack for all of them.
+#
+# Not installed here (Linux + NVIDIA GPU only, run those notebooks on Colab):
+#   openpipe-art[backend], vllm, triton  -> CH03 ch03_ART_RULER, ch06 MCP_server_composio training part, ch07 inference_backends
+#   ch09_agentvista clones its own repo and installs its own requirements.txt
+
+# notebook tooling
+jupyterlab
+ipykernel
+ipywidgets
+python-dotenv
+
+# LangChain / LangGraph
+langchain
+langchain-core
+langchain-openai
+langchain-community
+langchain-experimental
+langchain-tavily
+langchain-mcp-adapters
+# CH02 CoT needs langchain-sandbox 0.0.6 (PyodideSandboxTool) + Deno on PATH (scoop install deno).
+# 0.0.6 declares langchain-core<0.4 but works with 1.x, so install it afterwards:
+#   pip install --no-deps langchain-sandbox==0.0.6
+langgraph
+langgraph-swarm
+deepagents
+
+# LLM clients and structured output
+openai
+openai-agents
+instructor
+pydantic
+omegaconf
+tiktoken
+tenacity
+
+# search / tools
+google-search-results      # SerpAPI (import serpapi)
+serpapi
+exa_py
+tavily-python
+numexpr
+e2b-code-interpreter
+composio
+composio_openai
+pydantic-monty
+
+# MCP / A2A
+mcp
+fastmcp
+google-adk[a2a]
+a2a-sdk
+httpx
+nest-asyncio
+uvicorn
+
+# evaluation / observability
+openpipe-art               # client side only (RULER); no [backend]
+treequest
+deepeval
+deepteam
+langsmith
+langfuse
+weave
+genai-prices
+
+# security (ch12): llamafirewall -> codeshield -> semgrep, and semgrep has no Windows build.
+# Install those two without deps afterwards (CodeShield's semgrep scanner then won't work):
+#   pip install --no-deps llamafirewall codeshield
+typer
+pyyaml
+huggingface_hub
+transformers<5
+torch
+
+# data / plotting
+numpy
+pandas
+matplotlib
+datasets
+pyarrow
+pillow
+cairosvg
+rich
+tabulate
+pycryptodome
+requests
